@@ -119,6 +119,7 @@ body {
 .contact-bar {
     display: flex;
     gap: 25px;
+    align-items: center;
 }
 
 .contact-item {
@@ -127,10 +128,12 @@ body {
     gap: 6px;
     font-size: 10px;
     color: var(--text-medium);
+    white-space: nowrap;
 }
 
 .contact-icon {
     font-size: 11px;
+    flex-shrink: 0;
 }
 
 .availability-badge {
