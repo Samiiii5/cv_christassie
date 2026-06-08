@@ -1,0 +1,518 @@
+/* ============================================================
+   CV — Christ Assié
+   Design original et professionnel
+   Format A4 optimisé pour l'impression
+   ============================================================ */
+
+/* ── VARIABLES & RESET ───────────────────────────────────── */
+:root {
+    --accent-color: #1a5f5f;
+    --accent-light: #247a7a;
+    --text-dark: #1a1a1a;
+    --text-medium: #4a4a4a;
+    --text-light: #6b6b6b;
+    --bg-white: #ffffff;
+    --bg-light: #f8f9fa;
+    --border-color: #e0e0e0;
+    
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Source Sans 3', 'Source Sans Pro', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: 11px;
+    line-height: 1.5;
+    color: var(--text-dark);
+    background: #e5e5e5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── CV CONTAINER (A4) ───────────────────────────────────── */
+.cv-container {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 20px auto;
+    background: var(--bg-white);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* ── HEADER ──────────────────────────────────────────────── */
+.header {
+    background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+    padding: 28px 35px 20px;
+    border-bottom: 2px solid var(--accent-color);
+    position: relative;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 120px;
+    height: 100%;
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-light) 100%);
+    clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
+    opacity: 0.08;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 18px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.initials {
+    font-family: var(--font-display);
+    font-size: 52px;
+    font-weight: 700;
+    color: var(--accent-color);
+    line-height: 1;
+    letter-spacing: -2px;
+    position: relative;
+}
+
+.initials::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--accent-color);
+}
+
+.name-section {
+    padding-top: 8px;
+}
+
+.name {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.1;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.title {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-medium);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.4;
+}
+
+.header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+.photo-container {
+    position: relative;
+}
+
+.profile-photo {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent-color);
+    box-shadow: 0 4px 12px rgba(26, 95, 95, 0.2);
+}
+
+.availability-badge {
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-light) 100%);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 8px rgba(26, 95, 95, 0.25);
+}
+
+.badge-icon {
+    font-size: 10px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+.contact-bar {
+    display: flex;
+    gap: 25px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    color: var(--text-medium);
+}
+
+.contact-icon {
+    font-size: 12px;
+}
+
+/* ── MAIN CONTENT LAYOUT ──────────────────────────────────── */
+.main-content {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    gap: 0;
+    min-height: calc(297mm - 140px);
+}
+
+.left-column {
+    padding: 28px 35px 28px 35px;
+    border-right: 1px solid var(--border-color);
+}
+
+.right-column {
+    padding: 28px 35px 28px 30px;
+    background: #fafbfc;
+}
+
+/* ── SECTIONS ─────────────────────────────────────────────── */
+.section {
+    margin-bottom: 24px;
+}
+
+.section:last-child {
+    margin-bottom: 0;
+}
+
+.section-title {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--accent-color);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: 0.5px;
+}
+
+.section-title::before {
+    content: '';
+    width: 24px;
+    height: 2px;
+    background: var(--accent-color);
+}
+
+.section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--accent-color), transparent);
+    opacity: 0.3;
+}
+
+/* ── PROFIL ──────────────────────────────────────────────── */
+.profil-text {
+    font-size: 11px;
+    line-height: 1.7;
+    color: var(--text-medium);
+    text-align: justify;
+}
+
+/* ── PROJETS ──────────────────────────────────────────────── */
+.projet-item {
+    margin-bottom: 18px;
+    padding-bottom: 16px;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+.projet-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.projet-titre {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.projet-outils {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.tool-badge {
+    background: var(--accent-color);
+    color: white;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 8px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.projet-points {
+    list-style: none;
+    padding-left: 0;
+}
+
+.projet-points li {
+    font-size: 10px;
+    line-height: 1.6;
+    color: var(--text-medium);
+    margin-bottom: 5px;
+    padding-left: 14px;
+    position: relative;
+}
+
+.projet-points li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    font-size: 10px;
+}
+
+.projet-points li:last-child {
+    margin-bottom: 0;
+}
+
+/* ── FORMATION ────────────────────────────────────────────── */
+.formation-item {
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.formation-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.formation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 6px;
+}
+
+.formation-diplome {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.formation-periode {
+    font-size: 10px;
+    color: var(--accent-color);
+    font-weight: 500;
+}
+
+.formation-details {
+    padding-left: 0;
+}
+
+.formation-intitule {
+    font-size: 10px;
+    color: var(--text-medium);
+    margin-bottom: 3px;
+    font-style: italic;
+}
+
+.formation-etablissement {
+    font-size: 10px;
+    color: var(--text-light);
+    margin-bottom: 4px;
+}
+
+.formation-mention {
+    display: inline-block;
+    background: var(--bg-light);
+    color: var(--text-medium);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 9px;
+    font-weight: 500;
+    border-left: 2px solid var(--accent-color);
+}
+
+/* ── LOGICIELS ─────────────────────────────────────────────── */
+.logiciel-categorie {
+    margin-bottom: 14px;
+}
+
+.logiciel-categorie:last-child {
+    margin-bottom: 0;
+}
+
+.categorie-nom {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.badges-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.software-badge {
+    background: white;
+    color: var(--text-dark);
+    border: 1px solid var(--accent-color);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 9px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.software-badge:hover {
+    background: var(--accent-color);
+    color: white;
+}
+
+/* ── MÉTHODOLOGIQUES & SAVOIR-ÊTRE ───────────────────────── */
+.methodological-list,
+.soft-skills-list {
+    list-style: none;
+    padding: 0;
+}
+
+.methodological-list li,
+.soft-skills-list li {
+    font-size: 10px;
+    line-height: 1.8;
+    color: var(--text-medium);
+    margin-bottom: 4px;
+    padding-left: 18px;
+    position: relative;
+}
+
+.methodological-list li::before,
+.soft-skills-list li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    font-size: 8px;
+}
+
+.methodological-list li:last-child,
+.soft-skills-list li:last-child {
+    margin-bottom: 0;
+}
+
+/* ── CENTRES D'INTÉRÊT ───────────────────────────────────── */
+.interests {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.interest-tag {
+    background: var(--accent-color);
+    color: white;
+    padding: 5px 14px;
+    border-radius: 15px;
+    font-size: 9px;
+    font-weight: 500;
+}
+
+/* ── PRINT STYLES ──────────────────────────────────────────── */
+@media print {
+    body {
+        background: white;
+    }
+    
+    .cv-container {
+        width: 210mm;
+        min-height: 297mm;
+        margin: 0;
+        box-shadow: none;
+        page-break-after: always;
+    }
+    
+    .availability-badge .badge-icon {
+        animation: none;
+    }
+    
+    @page {
+        size: A4;
+        margin: 0;
+    }
+}
+
+/* ── RESPONSIVE (pour prévisualisation) ─────────────────────── */
+@media screen and (max-width: 800px) {
+    .cv-container {
+        width: 100%;
+        min-height: auto;
+        margin: 0;
+    }
+    
+    .header-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .header-left {
+        width: 100%;
+    }
+    
+    .header-right {
+        width: 100%;
+        align-items: center;
+    }
+    
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .left-column {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+}

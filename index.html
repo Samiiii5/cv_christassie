@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV — Christ Assié</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="cv-container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-left">
+                    <div class="initials">CA</div>
+                    <div class="name-section">
+                        <h1 class="name">Christ Assié</h1>
+                        <p class="title" id="titre"></p>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="photo-container">
+                        <img src="photo.jpeg" alt="Christ Assié" class="profile-photo">
+                    </div>
+                    <div class="availability-badge">
+                        <span class="badge-icon">●</span>
+                        <span id="disponibilite-label"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-bar">
+                <div class="contact-item">
+                    <span class="contact-icon">📞</span>
+                    <span id="telephone"></span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">✉</span>
+                    <span id="email"></span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <span id="adresse"></span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Left Column -->
+            <div class="left-column">
+                <section class="section">
+                    <h2 class="section-title">Formation</h2>
+                    <div id="formation-container"></div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Outils & Logiciels</h2>
+                    <div id="logiciels-container"></div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Savoir-être</h2>
+                    <ul class="soft-skills-list" id="savoir-etre"></ul>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Centres d'Intérêt</h2>
+                    <div class="interests" id="interets"></div>
+                </section>
+            </div>
+
+            <!-- Right Column -->
+            <div class="right-column">
+                <section class="section">
+                    <h2 class="section-title">Profil</h2>
+                    <p class="profil-text" id="profil"></p>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Projets Académiques</h2>
+                    <div id="projets-container"></div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Compétences Méthodologiques</h2>
+                    <ul class="methodological-list" id="methodologiques"></ul>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script src="cv-data.js"></script>
+    <script>
+        // Populate content from cvData
+        document.getElementById('titre').textContent = cvData.identity.titre;
+        document.getElementById('disponibilite-label').textContent = cvData.disponibilite.label;
+        document.getElementById('telephone').textContent = cvData.contact.telephone;
+        document.getElementById('email').textContent = cvData.contact.email;
+        document.getElementById('adresse').textContent = cvData.contact.adresse;
+        document.getElementById('profil').textContent = cvData.profil;
+
+        // Formation
+        const formationContainer = document.getElementById('formation-container');
+        cvData.formation.forEach(f => {
+            const div = document.createElement('div');
+            div.className = 'formation-item';
+            div.innerHTML = `
+                <div class="formation-header">
+                    <span class="formation-diplome">${f.diplome}</span>
+                    <span class="formation-periode">${f.periode}</span>
+                </div>
+                <div class="formation-details">
+                    <p class="formation-intitule">${f.intitule}</p>
+                    <p class="formation-etablissement">${f.etablissement}</p>
+                    ${f.mention ? `<span class="formation-mention">${f.mention}</span>` : ''}
+                </div>
+            `;
+            formationContainer.appendChild(div);
+        });
+
+        // Projets
+        const projetsContainer = document.getElementById('projets-container');
+        cvData.projets.forEach(p => {
+            const div = document.createElement('div');
+            div.className = 'projet-item';
+            const outilsBadges = p.outils.map(o => `<span class="tool-badge">${o}</span>`).join('');
+            const points = p.points.map(pt => `<li>${pt}</li>`).join('');
+            div.innerHTML = `
+                <h3 class="projet-titre">${p.titre}</h3>
+                <div class="projet-outils">${outilsBadges}</div>
+                <ul class="projet-points">${points}</ul>
+            `;
+            projetsContainer.appendChild(div);
+        });
+
+        // Logiciels
+        const logicielsContainer = document.getElementById('logiciels-container');
+        cvData.competences.logiciels.forEach(cat => {
+            const div = document.createElement('div');
+            div.className = 'logiciel-categorie';
+            const badges = cat.outils.map(o => `<span class="software-badge">${o}</span>`).join('');
+            div.innerHTML = `
+                <p class="categorie-nom">${cat.categorie}</p>
+                <div class="badges-container">${badges}</div>
+            `;
+            logicielsContainer.appendChild(div);
+        });
+
+        // Compétences méthodologiques
+        const methodologiquesList = document.getElementById('methodologiques');
+        cvData.competences.methodologiques.forEach(m => {
+            const li = document.createElement('li');
+            li.textContent = m;
+            methodologiquesList.appendChild(li);
+        });
+
+        // Savoir-être
+        const savoirEtreList = document.getElementById('savoir-etre');
+        cvData.savoirEtre.forEach(s => {
+            const li = document.createElement('li');
+            li.textContent = s;
+            savoirEtreList.appendChild(li);
+        });
+
+        // Centres d'intérêt
+        const interetsDiv = document.getElementById('interets');
+        interetsDiv.innerHTML = cvData.interets.map(i => `<span class="interest-tag">${i}</span>`).join('');
+    </script>
+</body>
+</html>
